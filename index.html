@@ -76,11 +76,6 @@ header {
   color: white;
 }
 
-.profile-btn {
-  background: #eef5f0;
-  color: #07883f;
-}
-
 /* HERO */
 
 .hero {
@@ -121,7 +116,6 @@ header {
   outline: none;
   padding: 16px;
   min-width: 0;
-  color: #222;
 }
 
 .search-box button {
@@ -162,21 +156,7 @@ header {
   gap: 16px;
   overflow-x: auto;
   padding: 5px 3px 18px;
-  scrollbar-width: thin;
 }
-
-.horizontal-scroll::-webkit-scrollbar,
-.products::-webkit-scrollbar {
-  height: 6px;
-}
-
-.horizontal-scroll::-webkit-scrollbar-thumb,
-.products::-webkit-scrollbar-thumb {
-  background: #07883f;
-  border-radius: 20px;
-}
-
-/* CATEGORIES */
 
 .category {
   min-width: 145px;
@@ -192,8 +172,6 @@ header {
   font-size: 40px;
   margin-bottom: 12px;
 }
-
-/* PRODUCTS */
 
 .product {
   min-width: 240px;
@@ -218,14 +196,11 @@ header {
   padding: 16px;
 }
 
-.product-info h3 {
-  margin-bottom: 8px;
-}
-
 .price {
   color: #07883f;
   font-size: 19px;
   font-weight: bold;
+  margin-top: 8px;
 }
 
 .location {
@@ -234,24 +209,24 @@ header {
   font-size: 13px;
 }
 
-/* SELL BANNER */
+/* BANNERS */
 
-.sell-banner {
+.banner {
   background: linear-gradient(135deg,#17201b,#07883f);
   color: white;
   border-radius: 22px;
   padding: 32px 25px;
 }
 
-.sell-banner h2 {
+.banner h2 {
   margin-bottom: 10px;
 }
 
-.sell-banner p {
+.banner p {
   line-height: 1.6;
 }
 
-.sell-banner button {
+.banner button {
   margin-top: 20px;
   background: #f5b900;
   border: none;
@@ -260,23 +235,24 @@ header {
   font-weight: bold;
 }
 
-/* MODAL */
+/* GENERAL MODAL */
 
 .modal {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,.65);
+  background: rgba(0,0,0,.68);
   z-index: 500;
-  padding: 20px;
+  padding: 15px;
   overflow-y: auto;
 }
 
-.modal-content {
+.modal-card {
   background: white;
-  max-width: 520px;
-  margin: 35px auto;
-  border-radius: 22px;
+  width: 100%;
+  max-width: 650px;
+  margin: 20px auto;
+  border-radius: 24px;
   padding: 25px;
 }
 
@@ -287,164 +263,57 @@ header {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  font-size: 20px;
-}
-
-.modal-content h2 {
-  margin-bottom: 10px;
-}
-
-.subtitle {
-  color: #666;
-  line-height: 1.5;
-}
-
-/* WELCOME */
-
-.welcome-modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(135deg,#087f3c,#12a653);
-  z-index: 1000;
-  padding: 20px;
-  overflow-y: auto;
-}
-
-.welcome-card {
-  background: white;
-  max-width: 600px;
-  margin: 30px auto;
-  border-radius: 25px;
-  padding: 28px;
-}
-
-.welcome-logo {
-  font-size: 30px;
-  font-weight: 900;
-  color: #07883f;
-  margin-bottom: 20px;
-}
-
-.welcome-logo span {
-  color: #f5b900;
-}
-
-.welcome-card h1 {
-  font-size: 32px;
-  margin-bottom: 12px;
-}
-
-.welcome-card > p {
-  color: #666;
-  line-height: 1.6;
-  margin-bottom: 25px;
-}
-
-.favorite-grid {
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  gap: 10px;
-}
-
-.favorite {
-  border: 2px solid #e0e5e2;
-  background: white;
-  padding: 16px 10px;
-  border-radius: 14px;
-  text-align: left;
-}
-
-.favorite.selected {
-  border-color: #07883f;
-  background: #eefaf3;
-  color: #07883f;
-}
-
-.favorite span {
-  font-size: 25px;
-  margin-right: 8px;
-}
-
-.continue-btn {
-  width: 100%;
-  margin-top: 22px;
-  padding: 16px;
-  background: #07883f;
-  color: white;
-  border: none;
-  border-radius: 13px;
-  font-weight: bold;
-  font-size: 17px;
-}
-
-.skip-btn {
-  width: 100%;
-  margin-top: 10px;
-  padding: 13px;
-  background: transparent;
-  border: none;
-  color: #777;
-}
-
-/* FEEDBACK */
-
-.feedback-card {
-  text-align: center;
-}
-
-.stars {
-  display: flex;
-  justify-content: center;
-  gap: 5px;
-  margin: 20px 0;
-}
-
-.star {
-  border: none;
-  background: transparent;
-  font-size: 38px;
-  filter: grayscale(1);
-  opacity: .5;
-}
-
-.star.selected {
-  filter: grayscale(0);
-  opacity: 1;
-}
-
-.recommend {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 8px;
-  margin: 15px 0;
-}
-
-.recommend button {
-  border: 2px solid #ddd;
-  background: white;
-  padding: 13px 5px;
-  border-radius: 12px;
-}
-
-.recommend button.selected {
-  border-color: #07883f;
-  background: #eefaf3;
-}
-
-textarea {
-  width: 100%;
-  min-height: 100px;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  padding: 13px;
-  resize: vertical;
+  font-size: 21px;
 }
 
 /* SELLER REGISTRATION */
 
+.registration-header {
+  margin-bottom: 22px;
+}
+
+.registration-header h2 {
+  font-size: 27px;
+  margin-bottom: 8px;
+}
+
+.registration-header p {
+  color: #666;
+  line-height: 1.5;
+}
+
+.progress {
+  display: flex;
+  gap: 5px;
+  margin: 20px 0 28px;
+}
+
+.progress-step {
+  flex: 1;
+  height: 6px;
+  background: #ddd;
+  border-radius: 20px;
+}
+
+.progress-step.active {
+  background: #07883f;
+}
+
+.step {
+  display: none;
+}
+
+.step.active {
+  display: block;
+}
+
+.step h3 {
+  font-size: 21px;
+  margin-bottom: 18px;
+}
+
 .form-group {
-  margin-top: 15px;
+  margin-bottom: 16px;
 }
 
 .form-group label {
@@ -454,23 +323,127 @@ textarea {
 }
 
 .form-group input,
-.form-group select {
+.form-group select,
+.form-group textarea {
   width: 100%;
   padding: 14px;
   border: 1px solid #ccc;
-  border-radius: 11px;
+  border-radius: 12px;
   outline: none;
+  background: white;
 }
 
-.register-btn {
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #07883f;
+}
+
+.two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* UPLOAD */
+
+.upload-box {
+  border: 2px dashed #aaa;
+  border-radius: 15px;
+  padding: 25px 15px;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.upload-box input {
+  margin-top: 12px;
   width: 100%;
-  margin-top: 20px;
-  padding: 15px;
-  background: #07883f;
-  color: white;
+}
+
+.preview {
+  width: 90px;
+  height: 90px;
+  border-radius: 15px;
+  object-fit: cover;
+  display: none;
+  margin: 10px auto;
+}
+
+/* CHECKBOXES */
+
+.checkbox-list {
+  display: grid;
+  gap: 10px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f6f8f6;
+  padding: 13px;
+  border-radius: 11px;
+}
+
+.checkbox-item input {
+  width: 19px;
+  height: 19px;
+}
+
+/* NAVIGATION */
+
+.form-navigation {
+  display: flex;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.next-btn,
+.back-btn,
+.create-btn {
+  flex: 1;
   border: none;
+  padding: 15px;
   border-radius: 12px;
   font-weight: bold;
+}
+
+.next-btn,
+.create-btn {
+  background: #07883f;
+  color: white;
+}
+
+.back-btn {
+  background: #eee;
+}
+
+.create-btn {
+  background: #07883f;
+}
+
+/* REVIEW */
+
+.review-box {
+  background: #f5f8f5;
+  border-radius: 15px;
+  padding: 18px;
+  margin-bottom: 12px;
+}
+
+.review-box h4 {
+  color: #07883f;
+  margin-bottom: 8px;
+}
+
+.review-line {
+  margin: 6px 0;
+  line-height: 1.5;
 }
 
 /* PAYMENT */
@@ -507,15 +480,6 @@ textarea {
   font-weight: bold;
 }
 
-.notice {
-  background: #fff8df;
-  padding: 12px;
-  border-radius: 10px;
-  margin-top: 15px;
-  font-size: 13px;
-  color: #665300;
-}
-
 /* FOOTER */
 
 footer {
@@ -535,14 +499,6 @@ footer p {
 
 @media(max-width:600px) {
 
-  .header-actions {
-    gap: 5px;
-  }
-
-  .profile-btn {
-    display: none;
-  }
-
   .search-box {
     flex-direction: column;
     gap: 8px;
@@ -552,15 +508,18 @@ footer p {
     padding: 15px;
   }
 
-  .favorite-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .payment-methods,
-  .recommend {
+  .two-columns {
     grid-template-columns: 1fr;
   }
 
+  .payment-methods {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-card {
+    margin: 5px auto;
+    padding: 20px;
+  }
 }
 </style>
 </head>
@@ -576,12 +535,6 @@ footer p {
   </div>
 
   <div class="header-actions">
-
-    <button
-      class="header-btn profile-btn"
-      onclick="openSeller()">
-      Seller
-    </button>
 
     <button
       class="header-btn sell-btn"
@@ -604,18 +557,17 @@ footer p {
   </h1>
 
   <p>
-    Discover products, services and great deals from sellers
-    across Uganda.
+    Discover products, services and great deals from
+    sellers across Uganda.
   </p>
 
   <div class="search-box">
 
     <input
-      id="searchInput"
       type="text"
       placeholder="Search phones, cars, clothes, services...">
 
-    <button onclick="searchProducts()">
+    <button>
       Search
     </button>
 
@@ -670,11 +622,6 @@ footer p {
       <b>Furniture</b>
     </div>
 
-    <div class="category">
-      <div class="category-icon">💼</div>
-      <b>Jobs</b>
-    </div>
-
   </div>
 
 </section>
@@ -686,10 +633,9 @@ footer p {
 
   <div class="section-title">
     <h2>Popular Products</h2>
-    <div class="view-all">See all →</div>
   </div>
 
-  <div class="products" id="products">
+  <div class="products">
 
     <div class="product">
       <div class="product-image">📱</div>
@@ -732,17 +678,17 @@ footer p {
 </section>
 
 
-<!-- SELL -->
+<!-- SELL BANNER -->
 
 <section class="section">
 
-  <div class="sell-banner">
+  <div class="banner">
 
-    <h2>🏪 Want to sell on UgandaMarket?</h2>
+    <h2>🏪 Start selling on UgandaMarket</h2>
 
     <p>
-      Create your seller profile and start reaching buyers
-      across Uganda.
+      Create your seller profile, add your products and
+      reach buyers across Uganda.
     </p>
 
     <button onclick="openSeller()">
@@ -754,347 +700,555 @@ footer p {
 </section>
 
 
-<!-- PAYMENT -->
-
-<section class="section">
-
-  <div class="sell-banner">
-
-    <h2>🚀 Promote your advert</h2>
-
-    <p>
-      Get more people to see your products by promoting
-      your advert.
-    </p>
-
-    <button onclick="openPayment()">
-      Promote Ad
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- WELCOME MODAL -->
-
-<div class="welcome-modal" id="welcomeModal">
-
-  <div class="welcome-card">
-
-    <div class="welcome-logo">
-      Uganda<span>Market</span> 🇺🇬
-    </div>
-
-    <h1>Welcome to UgandaMarket!</h1>
-
-    <p>
-      Tell us what you are interested in so we can make
-      your marketplace experience better.
-    </p>
-
-    <h3>What would you like to see?</h3>
-
-    <br>
-
-    <div class="favorite-grid">
-
-      <button class="favorite" onclick="toggleFavorite(this,'Phones')">
-        <span>📱</span> Phones
-      </button>
-
-      <button class="favorite" onclick="toggleFavorite(this,'Cars')">
-        <span>🚗</span> Cars
-      </button>
-
-      <button class="favorite" onclick="toggleFavorite(this,'Fashion')">
-        <span>👕</span> Fashion
-      </button>
-
-      <button class="favorite" onclick="toggleFavorite(this,'Property')">
-        <span>🏠</span> Property
-      </button>
-
-      <button class="favorite" onclick="toggleFavorite(this,'Electronics')">
-        <span>💻</span> Electronics
-      </button>
-
-      <button class="favorite" onclick="toggleFavorite(this,'Furniture')">
-        <span>🪑</span> Furniture
-      </button>
-
-      <button class="favorite" onclick="toggleFavorite(this,'Services')">
-        <span>🛠️</span> Services
-      </button>
-
-      <button class="favorite" onclick="toggleFavorite(this,'Jobs')">
-        <span>💼</span> Jobs
-      </button>
-
-    </div>
-
-    <button
-      class="continue-btn"
-      onclick="finishWelcome()">
-      Continue to UgandaMarket
-    </button>
-
-    <button
-      class="skip-btn"
-      onclick="skipWelcome()">
-      Skip for now
-    </button>
-
-  </div>
-
-</div>
-
-
-<!-- FEEDBACK MODAL -->
-
-<div class="modal" id="feedbackModal">
-
-  <div class="modal-content feedback-card">
-
-    <button class="close" onclick="closeFeedback()">×</button>
-
-    <h2>How are you finding UgandaMarket?</h2>
-
-    <p class="subtitle">
-      You've had a chance to explore the site.
-      We'd love to hear what you think.
-    </p>
-
-    <div class="stars">
-
-      <button class="star" onclick="rateSite(1)">★</button>
-      <button class="star" onclick="rateSite(2)">★</button>
-      <button class="star" onclick="rateSite(3)">★</button>
-      <button class="star" onclick="rateSite(4)">★</button>
-      <button class="star" onclick="rateSite(5)">★</button>
-
-    </div>
-
-    <h3>Would you recommend UgandaMarket?</h3>
-
-    <div class="recommend">
-
-      <button onclick="recommend(this,'Yes')">
-        👍 Yes
-      </button>
-
-      <button onclick="recommend(this,'Maybe')">
-        🤔 Maybe
-      </button>
-
-      <button onclick="recommend(this,'No')">
-        👎 No
-      </button>
-
-    </div>
-
-    <textarea
-      id="feedbackText"
-      placeholder="Anything we can improve? (Optional)">
-    </textarea>
-
-    <button
-      class="register-btn"
-      onclick="submitFeedback()">
-      Submit Feedback
-    </button>
-
-    <button
-      class="skip-btn"
-      onclick="closeFeedback()">
-      Maybe later
-    </button>
-
-  </div>
-
-</div>
-
-
-<!-- SELLER REGISTRATION -->
+<!-- SELLER REGISTRATION MODAL -->
 
 <div class="modal" id="sellerModal">
 
-  <div class="modal-content">
+  <div class="modal-card">
 
     <button class="close" onclick="closeSeller()">×</button>
 
-    <h2>🏪 Become a UgandaMarket Seller</h2>
+    <div class="registration-header">
 
-    <p class="subtitle">
-      Create your seller profile and start listing your products.
-    </p>
+      <h2>🏪 Become a Seller</h2>
 
-    <div class="form-group">
-      <label>Full name</label>
-      <input
-        id="sellerName"
-        type="text"
-        placeholder="Your full name">
-    </div>
-
-    <div class="form-group">
-      <label>Mobile number</label>
-      <input
-        id="sellerPhone"
-        type="tel"
-        placeholder="07XXXXXXXX">
-    </div>
-
-    <div class="form-group">
-      <label>Seller type</label>
-
-      <select id="sellerType">
-
-        <option>Individual seller</option>
-        <option>Business</option>
-        <option>Service provider</option>
-
-      </select>
+      <p>
+        Create your UgandaMarket seller profile.
+        This will allow you to list and manage your products.
+      </p>
 
     </div>
 
-    <div class="form-group">
 
-      <label>District / location</label>
+    <!-- PROGRESS -->
 
-      <input
-        id="sellerLocation"
-        type="text"
-        placeholder="e.g. Kampala">
+    <div class="progress">
 
-    </div>
-
-    <div class="form-group">
-
-      <label>What do you sell?</label>
-
-      <select id="sellerCategory">
-
-        <option>Phones</option>
-        <option>Cars</option>
-        <option>Fashion</option>
-        <option>Property</option>
-        <option>Electronics</option>
-        <option>Furniture</option>
-        <option>Services</option>
-        <option>Other</option>
-
-      </select>
+      <div class="progress-step active" id="progress1"></div>
+      <div class="progress-step" id="progress2"></div>
+      <div class="progress-step" id="progress3"></div>
+      <div class="progress-step" id="progress4"></div>
 
     </div>
 
-    <button
-      class="register-btn"
-      onclick="registerSeller()">
-      Create Seller Profile
-    </button>
 
-    <div class="notice">
-      🔒 This is the registration interface for now.
-      A secure database and account system will be connected
-      before real seller accounts go live.
-    </div>
+    <!-- STEP 1 -->
 
-  </div>
+    <div class="step active" id="step1">
 
-</div>
+      <h3>👤 Your account</h3>
+
+      <div class="form-group">
+
+        <label>Full name *</label>
+
+        <input
+          id="fullName"
+          type="text"
+          placeholder="Enter your full name">
+
+      </div>
 
 
-<!-- PAYMENT MODAL -->
+      <div class="form-group">
 
-<div class="modal" id="paymentModal">
+        <label>Username *</label>
 
-  <div class="modal-content">
+        <input
+          id="username"
+          type="text"
+          placeholder="Choose a username">
 
-    <button class="close" onclick="closePayment()">×</button>
+      </div>
 
-    <h2>💳 Pay for your advert</h2>
 
-    <p class="subtitle">
-      Choose how you want to pay.
-    </p>
+      <div class="form-group">
 
-    <div class="payment-methods">
+        <label>Mobile number *</label>
 
-      <button
-        class="payment-method active"
-        onclick="selectMethod(this)">
-        🟡 MTN Mobile Money
-      </button>
+        <input
+          id="sellerPhone"
+          type="tel"
+          placeholder="07XXXXXXXX">
 
-      <button
-        class="payment-method"
-        onclick="selectMethod(this)">
-        🔴 Airtel Money
-      </button>
+      </div>
 
-    </div>
 
-    <div class="form-group">
+      <div class="form-group">
 
-      <label>Currency</label>
+        <label>Email address</label>
 
-      <select>
+        <input
+          id="sellerEmail"
+          type="email"
+          placeholder="example@email.com">
 
-        <option>🇺🇬 UGX — Ugandan Shilling</option>
-        <option>🇺🇸 USD — US Dollar</option>
-        <option>🇬🇧 GBP — British Pound</option>
-        <option>🇪🇺 EUR — Euro</option>
+      </div>
 
-      </select>
 
-    </div>
+      <div class="two-columns">
 
-    <div class="form-group">
+        <div class="form-group">
 
-      <label>Select mobile number</label>
+          <label>Password *</label>
 
-      <select id="phoneNumber">
+          <input
+            id="password"
+            type="password"
+            placeholder="Create password">
 
-        <option>077X XXX XXX — MTN</option>
-        <option>078X XXX XXX — Airtel</option>
-        <option>070X XXX XXX — MTN</option>
+        </div>
 
-      </select>
 
-    </div>
+        <div class="form-group">
 
-    <button
-      class="add-number"
-      onclick="addNumber()"
-      style="width:100%;padding:12px;border:1px dashed #07883f;background:white;color:#07883f;border-radius:12px;font-weight:bold;">
-      + Add another mobile number
-    </button>
+          <label>Confirm password *</label>
 
-    <div class="form-group">
+          <input
+            id="confirmPassword"
+            type="password"
+            placeholder="Repeat password">
 
-      <label>Advertising package</label>
+        </div>
 
-      <select>
+      </div>
 
-        <option>7 days — UGX 10,000</option>
-        <option>14 days — UGX 18,000</option>
-        <option>30 days — UGX 30,000</option>
 
-      </select>
+      <div class="form-navigation">
+
+        <button
+          class="next-btn"
+          onclick="nextStep(1)">
+          Continue →
+        </button>
+
+      </div>
 
     </div>
 
-    <div class="notice">
-      🔒 UgandaMarket will never ask for or store your Mobile
-      Money PIN.
+
+    <!-- STEP 2 -->
+
+    <div class="step" id="step2">
+
+      <h3>🏪 Your store</h3>
+
+
+      <div class="form-group">
+
+        <label>Seller type *</label>
+
+        <select id="sellerType">
+
+          <option>Individual seller</option>
+          <option>Business</option>
+          <option>Service provider</option>
+
+        </select>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Store / business name *</label>
+
+        <input
+          id="storeName"
+          type="text"
+          placeholder="Example: Kampala Phone Hub">
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Store description</label>
+
+        <textarea
+          id="storeDescription"
+          placeholder="Tell buyers about your business or products..."></textarea>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Main category *</label>
+
+        <select id="mainCategory">
+
+          <option>Phones</option>
+          <option>Cars</option>
+          <option>Fashion</option>
+          <option>Property</option>
+          <option>Electronics</option>
+          <option>Furniture</option>
+          <option>Services</option>
+          <option>Jobs</option>
+          <option>Other</option>
+
+        </select>
+
+      </div>
+
+
+      <div class="two-columns">
+
+        <div class="form-group">
+
+          <label>District *</label>
+
+          <input
+            id="district"
+            type="text"
+            placeholder="Kampala">
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>Town / area</label>
+
+          <input
+            id="town"
+            type="text"
+            placeholder="Ntinda">
+
+        </div>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Profile / store logo</label>
+
+        <div class="upload-box">
+
+          🖼️ Choose your store logo
+
+          <input
+            type="file"
+            id="storeLogo"
+            accept="image/*"
+            onchange="previewImage(this,'logoPreview')">
+
+          <img
+            id="logoPreview"
+            class="preview">
+
+        </div>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Delivery options</label>
+
+        <div class="checkbox-list">
+
+          <label class="checkbox-item">
+
+            <input
+              type="checkbox"
+              value="Pickup">
+
+            Customer pickup
+
+          </label>
+
+
+          <label class="checkbox-item">
+
+            <input
+              type="checkbox"
+              value="Delivery">
+
+            I offer delivery
+
+          </label>
+
+
+          <label class="checkbox-item">
+
+            <input
+              type="checkbox"
+              value="Courier">
+
+            Courier delivery
+
+          </label>
+
+        </div>
+
+      </div>
+
+
+      <div class="two-columns">
+
+        <div class="form-group">
+
+          <label>Opening time</label>
+
+          <input
+            id="openingTime"
+            type="time"
+            value="08:00">
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>Closing time</label>
+
+          <input
+            id="closingTime"
+            type="time"
+            value="18:00">
+
+        </div>
+
+      </div>
+
+
+      <div class="form-navigation">
+
+        <button
+          class="back-btn"
+          onclick="showStep(1)">
+          ← Back
+        </button>
+
+        <button
+          class="next-btn"
+          onclick="nextStep(2)">
+          Continue →
+        </button>
+
+      </div>
+
     </div>
 
-    <button
-      class="pay-btn"
-      onclick="startPayment()">
-      Pay UGX 10,000
-    </button>
+
+    <!-- STEP 3 -->
+
+    <div class="step" id="step3">
+
+      <h3>📦 Add your first product</h3>
+
+      <div class="form-group">
+
+        <label>Product name *</label>
+
+        <input
+          id="productName"
+          type="text"
+          placeholder="Example: Samsung Galaxy S24">
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Product description *</label>
+
+        <textarea
+          id="productDescription"
+          placeholder="Describe your product..."></textarea>
+
+      </div>
+
+
+      <div class="two-columns">
+
+        <div class="form-group">
+
+          <label>Price (UGX) *</label>
+
+          <input
+            id="productPrice"
+            type="number"
+            placeholder="850000">
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>Stock quantity *</label>
+
+          <input
+            id="stock"
+            type="number"
+            min="1"
+            placeholder="1">
+
+        </div>
+
+      </div>
+
+
+      <div class="two-columns">
+
+        <div class="form-group">
+
+          <label>Condition</label>
+
+          <select id="condition">
+
+            <option>New</option>
+            <option>Used - Like New</option>
+            <option>Used - Good</option>
+            <option>Used - Fair</option>
+
+          </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>Price negotiable?</label>
+
+          <select id="negotiable">
+
+            <option>Yes</option>
+            <option>No</option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Product location</label>
+
+        <input
+          id="productLocation"
+          type="text"
+          placeholder="Kampala, Uganda">
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Product photos</label>
+
+        <div class="upload-box">
+
+          📸 Add product photos
+
+          <input
+            type="file"
+            id="productImages"
+            accept="image/*"
+            multiple>
+
+        </div>
+
+      </div>
+
+
+      <div class="form-navigation">
+
+        <button
+          class="back-btn"
+          onclick="showStep(2)">
+          ← Back
+        </button>
+
+        <button
+          class="next-btn"
+          onclick="nextStep(3)">
+          Review →
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- STEP 4 -->
+
+    <div class="step" id="step4">
+
+      <h3>✅ Review your information</h3>
+
+      <div class="review-box">
+
+        <h4>Account</h4>
+
+        <div
+          class="review-line"
+          id="reviewAccount">
+        </div>
+
+      </div>
+
+
+      <div class="review-box">
+
+        <h4>Store</h4>
+
+        <div
+          class="review-line"
+          id="reviewStore">
+        </div>
+
+      </div>
+
+
+      <div class="review-box">
+
+        <h4>First product</h4>
+
+        <div
+          class="review-line"
+          id="reviewProduct">
+        </div>
+
+      </div>
+
+
+      <div class="checkbox-item">
+
+        <input
+          type="checkbox"
+          id="sellerAgreement">
+
+        <span>
+          I agree to UgandaMarket's seller rules and confirm
+          that the information I have provided is accurate.
+        </span>
+
+      </div>
+
+
+      <div class="form-navigation">
+
+        <button
+          class="back-btn"
+          onclick="showStep(3)">
+          ← Back
+        </button>
+
+        <button
+          class="create-btn"
+          onclick="createSeller()">
+          Create Seller Profile
+        </button>
+
+      </div>
+
+    </div>
 
   </div>
 
@@ -1108,8 +1262,8 @@ footer p {
   <h2>UgandaMarket 🇺🇬</h2>
 
   <p>
-    Uganda's marketplace for buying and selling
-    products and services.
+    Uganda's marketplace for buying and selling products
+    and services.
   </p>
 
   <p>
@@ -1122,104 +1276,47 @@ footer p {
 <script>
 
 /* =========================
-   FIRST VISIT
+   SELLER REGISTRATION
 ========================= */
 
-let favorites = [];
+let currentStep = 1;
 
-function toggleFavorite(button, category) {
 
-  button.classList.toggle("selected");
+/* OPEN SELLER */
 
-  if (favorites.includes(category)) {
-
-    favorites = favorites.filter(
-      item => item !== category
-    );
-
-  } else {
-
-    favorites.push(category);
-
-  }
-}
-
-function finishWelcome() {
-
-  localStorage.setItem(
-    "ugamarketWelcomeCompleted",
-    "true"
-  );
-
-  localStorage.setItem(
-    "ugamarketFavorites",
-    JSON.stringify(favorites)
-  );
+function openSeller() {
 
   document.getElementById(
-    "welcomeModal"
-  ).style.display = "none";
+    "sellerModal"
+  ).style.display = "block";
+
+  showStep(1);
 
 }
 
-function skipWelcome() {
 
-  localStorage.setItem(
-    "ugamarketWelcomeCompleted",
-    "true"
-  );
+/* CLOSE SELLER */
+
+function closeSeller() {
 
   document.getElementById(
-    "welcomeModal"
+    "sellerModal"
   ).style.display = "none";
 
 }
 
 
-/* =========================
-   FEEDBACK
-========================= */
+/* SHOW STEP */
 
-let selectedRating = 0;
-let selectedRecommendation = "";
+function showStep(stepNumber) {
 
-function rateSite(number) {
+  currentStep = stepNumber;
 
-  selectedRating = number;
+  document.querySelectorAll(".step")
+    .forEach(function(step) {
 
-  document.querySelectorAll(".star")
-    .forEach((star,index) => {
-
-      if (index < number) {
-        star.classList.add("selected");
-      } else {
-        star.classList.remove("selected");
-      }
+      step.classList.remove("active");
 
     });
 
-}
-
-function recommend(button, answer) {
-
-  selectedRecommendation = answer;
-
-  document.querySelectorAll(".recommend button")
-    .forEach(btn => {
-      btn.classList.remove("selected");
-    });
-
-  button.classList.add("selected");
-
-}
-
-function submitFeedback() {
-
-  const feedback =
-    document.getElementById("feedbackText").value;
-
-  const feedbackData = {
-
-    rating: selectedRating,
-
-    r
+  document.ge
