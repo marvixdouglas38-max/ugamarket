@@ -2,546 +2,896 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>UgandaMarket</title>
 
 <style>
+
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
 }
 
+:root{
+  --green:#087f3f;
+  --green2:#0b9b50;
+  --yellow:#f7c400;
+  --bg:#f4f7f5;
+  --white:#ffffff;
+  --text:#15201a;
+  --muted:#69746d;
+  --line:#e1e7e3;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
 body{
-  font-family:Arial,sans-serif;
-  background:#f4f7f5;
-  color:#17201b;
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  padding-bottom:75px;
+}
+
+button,
+input,
+select,
+textarea{
+  font:inherit;
 }
 
 button{
-  font:inherit;
   cursor:pointer;
+  border:0;
 }
 
-header{
-  background:white;
-  padding:15px 5%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+/* TOP BAR */
+
+.topbar{
   position:sticky;
   top:0;
   z-index:50;
-  box-shadow:0 2px 10px rgba(0,0,0,.08);
+
+  height:64px;
+
+  background:white;
+
+  display:flex;
+  align-items:center;
+
+  gap:10px;
+
+  padding:0 14px;
+
+  border-bottom:1px solid var(--line);
 }
 
 .logo{
-  font-size:25px;
+  font-size:22px;
   font-weight:900;
-  color:#07883f;
+  white-space:nowrap;
 }
 
 .logo span{
-  color:#f4b900;
+  color:var(--green);
 }
 
-.header-buttons{
-  display:flex;
-  gap:8px;
+.logo b{
+  color:var(--yellow);
 }
 
-.header-buttons button{
-  border:0;
-  padding:11px 15px;
-  border-radius:10px;
+.searchBtn{
+  width:40px;
+  height:40px;
+
+  border-radius:50%;
+
+  background:#edf3ef;
+
+  font-size:18px;
+}
+
+.profileBtn{
+  width:40px;
+  height:40px;
+
+  border-radius:50%;
+
+  background:var(--green);
+
+  color:white;
+
   font-weight:bold;
 }
 
-.sell{
-  background:#07883f;
-  color:white;
+
+/* HORIZONTAL NAVIGATION */
+
+.nav{
+  position:sticky;
+  top:64px;
+
+  z-index:45;
+
+  display:flex;
+
+  overflow-x:auto;
+
+  background:white;
+
+  border-bottom:1px solid var(--line);
+
+  scrollbar-width:none;
 }
 
-.admin{
-  background:#17201b;
-  color:white;
+.nav::-webkit-scrollbar{
+  display:none;
 }
+
+.nav button{
+  flex:0 0 auto;
+
+  background:white;
+
+  color:var(--muted);
+
+  padding:14px 17px;
+
+  font-weight:bold;
+
+  border-bottom:3px solid transparent;
+}
+
+.nav button.active{
+  color:var(--green);
+
+  border-bottom-color:var(--green);
+}
+
 
 /* HERO */
 
 .hero{
-  padding:60px 5%;
+  background:
+    linear-gradient(
+      135deg,
+      var(--green),
+      var(--green2)
+    );
+
   color:white;
-  background:linear-gradient(135deg,#087d3b,#13a754);
+
+  padding:35px 18px;
 }
 
 .hero h1{
-  font-size:clamp(40px,9vw,70px);
-  max-width:750px;
+  font-size:40px;
+
+  line-height:1.05;
+
+  max-width:650px;
 }
 
-.hero h1 span{
-  color:#ffd21c;
+.hero h1 em{
+  color:#ffd21a;
+
+  font-style:normal;
 }
 
 .hero p{
-  margin-top:18px;
-  max-width:600px;
-  line-height:1.7;
-  font-size:18px;
+  margin-top:15px;
+
+  line-height:1.6;
+
+  max-width:650px;
+
+  color:#e9fff0;
 }
 
-.search{
+
+/* SEARCH */
+
+.bigsearch{
   display:flex;
-  max-width:750px;
+
   background:white;
-  padding:7px;
-  border-radius:15px;
-  margin-top:25px;
-}
 
-.search input{
-  flex:1;
-  border:0;
-  outline:0;
-  padding:15px;
-}
+  padding:6px;
 
-.search button{
-  border:0;
-  background:#f4b900;
-  padding:0 22px;
-  border-radius:10px;
-  font-weight:bold;
-}
-
-/* SECTIONS */
-
-.section{
-  padding:40px 5%;
-}
-
-.section h2{
-  margin-bottom:20px;
-}
-
-/* CATEGORIES */
-
-.categories{
-  display:flex;
-  gap:15px;
-  overflow-x:auto;
-  padding-bottom:10px;
-}
-
-.category{
-  min-width:140px;
-  background:white;
-  padding:25px 15px;
-  border-radius:17px;
-  text-align:center;
-  box-shadow:0 3px 12px rgba(0,0,0,.06);
-}
-
-.category div{
-  font-size:40px;
-  margin-bottom:10px;
-}
-
-/* PRODUCTS */
-
-.products{
-  display:flex;
-  gap:16px;
-  overflow-x:auto;
-}
-
-.product{
-  min-width:230px;
-  background:white;
-  border-radius:17px;
-  overflow:hidden;
-  box-shadow:0 3px 12px rgba(0,0,0,.08);
-}
-
-.product-image{
-  height:160px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:60px;
-  background:#e6f1e9;
-}
-
-.product-info{
-  padding:15px;
-}
-
-.price{
-  color:#07883f;
-  font-size:18px;
-  font-weight:bold;
-  margin-top:7px;
-}
-
-.location{
-  color:#777;
-  font-size:13px;
-  margin-top:7px;
-}
-
-/* BANNER */
-
-.banner{
-  background:#17201b;
-  color:white;
-  padding:30px;
-  border-radius:20px;
-}
-
-.banner button{
-  margin-top:18px;
-  background:#f4b900;
-  border:0;
-  padding:14px 20px;
-  border-radius:11px;
-  font-weight:bold;
-}
-
-/* MODAL */
-
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.7);
-  z-index:200;
-  overflow:auto;
-  padding:15px;
-}
-
-.modal-card{
-  background:white;
-  max-width:1100px;
-  margin:20px auto;
-  border-radius:22px;
-  padding:25px;
-}
-
-.close{
-  float:right;
-  border:0;
-  background:#eee;
-  width:38px;
-  height:38px;
-  border-radius:50%;
-  font-size:20px;
-}
-
-/* ADMIN */
-
-.admin-title{
-  margin-bottom:25px;
-}
-
-.admin-title h2{
-  font-size:30px;
-}
-
-.admin-title p{
-  color:#666;
-  margin-top:6px;
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-}
-
-.stat{
-  background:white;
-  padding:20px;
   border-radius:16px;
-  box-shadow:0 3px 12px rgba(0,0,0,.06);
-}
 
-.stat-icon{
-  font-size:28px;
-}
+  max-width:700px;
 
-.stat-label{
-  color:#777;
-  margin-top:8px;
-}
-
-.stat-number{
-  font-size:25px;
-  font-weight:900;
-  margin-top:5px;
-  color:#07883f;
-}
-
-/* DASHBOARD GRID */
-
-.dashboard-grid{
-  display:grid;
-  grid-template-columns:2fr 1fr;
-  gap:18px;
   margin-top:20px;
 }
 
-.dashboard-card{
-  background:white;
-  border-radius:17px;
-  padding:20px;
-  box-shadow:0 3px 12px rgba(0,0,0,.06);
-}
-
-.dashboard-card h3{
-  margin-bottom:15px;
-}
-
-/* CHART */
-
-.chart{
-  height:220px;
-  display:flex;
-  align-items:end;
-  gap:10px;
-  padding:10px;
-  border-bottom:1px solid #ddd;
-}
-
-.bar{
+.bigsearch input{
   flex:1;
-  background:#07883f;
-  border-radius:6px 6px 0 0;
-  min-height:20px;
+
+  border:0;
+
+  outline:0;
+
+  padding:13px;
+
+  min-width:0;
 }
 
-.days{
+.bigsearch button{
+  background:var(--yellow);
+
+  padding:0 18px;
+
+  border-radius:12px;
+
+  font-weight:bold;
+}
+
+
+/* CONTAINER */
+
+.container{
+  max-width:1100px;
+
+  margin:auto;
+
+  padding:20px 14px;
+}
+
+.section{
+  margin-bottom:30px;
+}
+
+.sectionHead{
   display:flex;
-  gap:10px;
-  margin-top:7px;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  margin-bottom:12px;
 }
 
-.days div{
-  flex:1;
-  text-align:center;
-  font-size:11px;
-  color:#777;
+.sectionHead h2{
+  font-size:21px;
 }
 
-/* TABLE */
+.sectionHead button{
+  background:none;
 
-.table-wrapper{
+  color:var(--green);
+
+  font-weight:bold;
+}
+
+
+/* HORIZONTAL SCROLL */
+
+.horizontal{
+  display:flex;
+
+  gap:12px;
+
   overflow-x:auto;
+
+  padding:3px 2px 10px;
+
+  scroll-snap-type:x mandatory;
+
+  scrollbar-width:none;
 }
 
-table{
-  width:100%;
-  border-collapse:collapse;
+.horizontal::-webkit-scrollbar{
+  display:none;
 }
 
-th,td{
-  padding:12px;
-  text-align:left;
-  border-bottom:1px solid #eee;
-  white-space:nowrap;
+
+/* CATEGORIES */
+
+.category{
+  flex:0 0 115px;
+
+  background:white;
+
+  border:1px solid var(--line);
+
+  border-radius:18px;
+
+  padding:17px 10px;
+
+  text-align:center;
+
+  scroll-snap-align:start;
+
+  box-shadow:
+    0 3px 12px #00000008;
 }
 
-th{
-  color:#555;
+.category div{
+  font-size:34px;
+
+  margin-bottom:8px;
+}
+
+.category b{
   font-size:13px;
 }
 
-.status{
-  padding:5px 9px;
-  border-radius:20px;
-  font-size:12px;
+
+/* PRODUCTS */
+
+.product{
+  flex:0 0 205px;
+
+  background:white;
+
+  border-radius:18px;
+
+  overflow:hidden;
+
+  border:1px solid var(--line);
+
+  scroll-snap-align:start;
+}
+
+.productImage{
+  height:145px;
+
+  background:#e7eee9;
+
+  display:grid;
+
+  place-items:center;
+
+  font-size:58px;
+
+  position:relative;
+}
+
+.productImage span{
+  position:absolute;
+
+  top:9px;
+  left:9px;
+
+  background:var(--green);
+
+  color:white;
+
+  padding:5px 8px;
+
+  border-radius:9px;
+
+  font-size:10px;
+
   font-weight:bold;
 }
 
-.paid{
-  background:#dff5e7;
-  color:#07883f;
+.productInfo{
+  padding:12px;
 }
 
-.pending{
-  background:#fff1c7;
-  color:#8a6900;
+.productInfo h3{
+  font-size:15px;
+
+  margin-bottom:6px;
 }
 
-/* ADMIN MENU */
+.productInfo strong{
+  display:block;
 
-.admin-menu{
-  display:flex;
-  gap:10px;
-  overflow-x:auto;
-  margin-bottom:20px;
+  color:var(--green);
+
+  font-size:15px;
 }
 
-.admin-menu button{
-  border:0;
-  background:#eef3ef;
-  padding:12px 16px;
-  border-radius:10px;
-  white-space:nowrap;
+.productInfo small{
+  display:block;
+
+  color:var(--muted);
+
+  margin-top:5px;
 }
 
-.admin-menu button.active{
-  background:#07883f;
-  color:white;
-}
-
-/* LIST */
-
-.list{
-  display:grid;
-  gap:10px;
-}
-
-.list-item{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:#f7f9f7;
-  padding:14px;
-  border-radius:12px;
-}
-
-.list-item small{
-  color:#777;
-}
 
 /* LIVE */
 
-.live{
-  background:#111;
+.liveCard{
+  flex:0 0 300px;
+
+  min-height:230px;
+
+  background:#101311;
+
   color:white;
-  border-radius:17px;
-  padding:25px;
+
+  border-radius:20px;
+
+  padding:18px;
+
+  scroll-snap-align:start;
 }
 
-.live-badge{
+.liveBadge{
   display:inline-block;
-  background:#e60000;
+
+  background:#ed1010;
+
   padding:6px 10px;
-  border-radius:7px;
-  font-weight:bold;
-  font-size:12px;
+
+  border-radius:9px;
+
+  font-size:11px;
+
+  font-weight:900;
+}
+
+.liveCard h3{
+  font-size:22px;
+
+  margin:18px 0 8px;
+}
+
+.liveCard p{
+  color:#bfcac2;
+
+  margin-bottom:12px;
+}
+
+.liveCard strong{
+  display:block;
+
   margin-bottom:15px;
 }
 
-.live-number{
-  font-size:35px;
+.liveCard button{
+  padding:10px 13px;
+
+  border-radius:11px;
+
+  margin-right:5px;
+
   font-weight:bold;
 }
 
-/* FOOTER */
-
-footer{
-  background:#111915;
-  color:white;
-  padding:35px 5%;
-  margin-top:30px;
+.liveCard button:first-child{
+  background:white;
 }
 
-footer p{
-  color:#aaa;
+.liveCard button:last-child{
+  background:#29332d;
+
+  color:white;
+}
+
+
+/* REELS */
+
+.reels{
+  padding-bottom:12px;
+}
+
+.reel{
+  flex:0 0 175px;
+
+  height:310px;
+
+  border-radius:20px;
+
+  overflow:hidden;
+
+  padding:15px;
+
+  color:white;
+
+  position:relative;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:flex-end;
+
+  scroll-snap-align:start;
+
+  background:
+    linear-gradient(
+      150deg,
+      #122f45,
+      var(--green)
+    );
+}
+
+.reel:nth-child(2){
+  background:
+    linear-gradient(
+      150deg,
+      #6b3c0d,
+      #e3a900
+    );
+}
+
+.reel:nth-child(3){
+  background:
+    linear-gradient(
+      150deg,
+      #40164f,
+      #c82d71
+    );
+}
+
+.reel:nth-child(4){
+  background:
+    linear-gradient(
+      150deg,
+      #073e52,
+      #079e9e
+    );
+}
+
+.play{
+  position:absolute;
+
+  top:14px;
+  left:14px;
+
+  width:40px;
+  height:40px;
+
+  display:grid;
+
+  place-items:center;
+
+  border-radius:50%;
+
+  background:#ffffffdd;
+
+  color:#111;
+}
+
+.reel h3{
+  font-size:17px;
+
+  margin-bottom:5px;
+}
+
+.reel p{
+  font-size:12px;
+
+  color:#eee;
+}
+
+.reel small{
+  margin-top:4px;
+
+  color:#eee;
+}
+
+.reelButtons{
+  display:flex;
+
+  gap:5px;
+
   margin-top:10px;
 }
 
-/* MOBILE */
+.reelButtons button{
+  background:#ffffff22;
 
-@media(max-width:800px){
+  border:1px solid #ffffff44;
 
-  .stats{
-    grid-template-columns:repeat(2,1fr);
-  }
+  color:white;
 
-  .dashboard-grid{
-    grid-template-columns:1fr;
-  }
+  padding:6px 8px;
 
+  border-radius:9px;
+
+  font-size:11px;
 }
 
-@media(max-width:500px){
 
-  .stats{
-    grid-template-columns:1fr 1fr;
+/* SELLERS */
+
+.seller{
+  flex:0 0 210px;
+
+  background:white;
+
+  border:1px solid var(--line);
+
+  border-radius:18px;
+
+  padding:17px;
+
+  scroll-snap-align:start;
+}
+
+.sellerIcon{
+  width:48px;
+  height:48px;
+
+  background:#e0f3e7;
+
+  border-radius:50%;
+
+  display:grid;
+
+  place-items:center;
+
+  font-size:23px;
+
+  margin-bottom:10px;
+}
+
+.seller h3{
+  font-size:15px;
+
+  margin-bottom:5px;
+}
+
+.seller small{
+  color:var(--muted);
+}
+
+.seller button{
+  width:100%;
+
+  margin-top:15px;
+
+  padding:10px;
+
+  border-radius:11px;
+
+  background:#e8f7ee;
+
+  color:var(--green);
+
+  font-weight:bold;
+}
+
+
+/* SELLER BANNER */
+
+.sellBanner{
+  background:#10251b;
+
+  color:white;
+
+  border-radius:22px;
+
+  padding:25px;
+}
+
+.sellBanner h2{
+  font-size:26px;
+}
+
+.sellBanner p{
+  color:#cbd8d0;
+
+  margin:9px 0 18px;
+
+  line-height:1.5;
+}
+
+.sellBanner button{
+  background:var(--green);
+
+  color:white;
+
+  padding:12px 18px;
+
+  border-radius:12px;
+
+  font-weight:bold;
+}
+
+
+/* BOTTOM MOBILE NAV */
+
+.bottomNav{
+  position:fixed;
+
+  bottom:0;
+  left:0;
+  right:0;
+
+  height:68px;
+
+  background:white;
+
+  border-top:1px solid var(--line);
+
+  z-index:60;
+
+  display:flex;
+
+  justify-content:space-around;
+}
+
+.bottomNav button{
+  background:none;
+
+  color:var(--muted);
+
+  font-size:11px;
+
+  font-weight:bold;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:3px;
+}
+
+.bottomNav button b{
+  font-size:21px;
+}
+
+.bottomNav button.active{
+  color:var(--green);
+}
+
+
+/* TABLET / DESKTOP */
+
+@media(min-width:800px){
+
+  .hero{
+    padding:50px;
   }
 
-  .header-buttons .admin{
+  .hero h1{
+    font-size:55px;
+  }
+
+  .container{
+    padding:30px;
+  }
+
+  .product{
+    flex-basis:240px;
+  }
+
+  .reel{
+    flex-basis:200px;
+  }
+
+  .bottomNav{
     display:none;
   }
 
-  .search{
-    flex-direction:column;
-    gap:7px;
+}
+
+
+/* SMALL PHONES */
+
+@media(max-width:450px){
+
+  .logo{
+    font-size:19px;
   }
 
-  .search button{
-    padding:14px;
+  .hero h1{
+    font-size:36px;
+  }
+
+  .nav button{
+    padding-left:13px;
+    padding-right:13px;
   }
 
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
+<!-- TOP BAR -->
 
-<header>
+<header class="topbar">
 
   <div class="logo">
-    Uganda<span>Market</span>
+    <span>Uganda</span><b>Market</b>
   </div>
 
-  <div class="header-buttons">
+  <button class="searchBtn"
+  onclick="openSearch()">
+    🔍
+  </button>
 
-    <button
-      class="admin"
-      onclick="openAdmin()">
-      👑 Owner
-    </button>
-
-    <button
-      class="sell"
-      onclick="alert('Seller registration will open here.')">
-      + Sell
-    </button>
-
-  </div>
+  <button class="profileBtn"
+  onclick="openModal('profileModal')">
+    M
+  </button>
 
 </header>
 
 
+<!-- HORIZONTAL NAVIGATION -->
+
+<nav class="nav">
+
+  <button class="active"
+  onclick="go('home',this)">
+    🏠 Home
+  </button>
+
+  <button
+  onclick="go('categories',this)">
+    🛍 Categories
+  </button>
+
+  <button
+  onclick="go('reels',this)">
+    🎬 Reels
+  </button>
+
+  <button
+  onclick="go('live',this)">
+    🔴 Live
+  </button>
+
+  <button
+  onclick="openModal('messagesModal')">
+    💬 Messages
+  </button>
+
+  <button
+  onclick="openModal('profileModal')">
+    👤 Profile
+  </button>
+
+  <button
+  onclick="openModal('ownerModal')">
+    🔐 Owner
+  </button>
+
+</nav>
+
+
 <!-- HOME -->
+
+<main id="home">
+
+
+<!-- HERO -->
 
 <section class="hero">
 
   <h1>
     Buy & Sell
-    <span>Anything</span>
+    <em>Anything</em>
     in Uganda 🇺🇬
   </h1>
 
   <p>
-    Discover products, services, sellers and live
-    advertising from across Uganda.
+    Discover products, services and great deals.
+    Watch seller Reels, join live advertising
+    and connect with people across Uganda.
   </p>
 
-  <div class="search">
+  <div class="bigsearch">
 
     <input
-      type="text"
-      placeholder="Search products, cars, phones, services...">
+    id="searchInput"
+    placeholder="Search phones, cars, clothes, services...">
 
-    <button>
+    <button
+    onclick="doSearch()">
       Search
     </button>
 
@@ -550,13 +900,29 @@ footer p{
 </section>
 
 
+<div class="container">
+
+
 <!-- CATEGORIES -->
 
-<section class="section">
+<section
+class="section"
+id="categories">
 
-  <h2>Explore Categories</h2>
+  <div class="sectionHead">
 
-  <div class="categories">
+    <h2>
+      Explore Categories
+    </h2>
+
+    <button>
+      View all →
+    </button>
+
+  </div>
+
+
+  <div class="horizontal">
 
     <div class="category">
       <div>📱</div>
@@ -565,7 +931,7 @@ footer p{
 
     <div class="category">
       <div>🚗</div>
-      <b>Cars</b>
+      <b>Vehicles</b>
     </div>
 
     <div class="category">
@@ -575,7 +941,7 @@ footer p{
 
     <div class="category">
       <div>🏠</div>
-      <b>Property</b>
+      <b>Home</b>
     </div>
 
     <div class="category">
@@ -584,13 +950,18 @@ footer p{
     </div>
 
     <div class="category">
-      <div>🛠️</div>
+      <div>🔧</div>
       <b>Services</b>
     </div>
 
     <div class="category">
-      <div>🪑</div>
-      <b>Furniture</b>
+      <div>🌾</div>
+      <b>Farming</b>
+    </div>
+
+    <div class="category">
+      <div>💼</div>
+      <b>Jobs</b>
     </div>
 
   </div>
@@ -602,77 +973,146 @@ footer p{
 
 <section class="section">
 
-  <h2>Popular Products</h2>
+  <div class="sectionHead">
 
-  <div class="products">
+    <h2>
+      🔥 Popular Products
+    </h2>
 
-    <div class="product">
+    <button>
+      See all →
+    </button>
 
-      <div class="product-image">
+  </div>
+
+
+  <div class="horizontal">
+
+
+    <article class="product">
+
+      <div class="productImage">
         📱
+        <span>NEW</span>
       </div>
 
-      <div class="product-info">
+      <div class="productInfo">
 
-        <h3>Samsung Galaxy</h3>
+        <h3>
+          Samsung Galaxy
+        </h3>
 
-        <div class="price">
-          UGX 850,000
-        </div>
+        <strong>
+          UGX 450,000
+        </strong>
 
-        <div class="location">
+        <small>
           📍 Kampala
-        </div>
+        </small>
 
       </div>
 
-    </div>
+    </article>
 
 
-    <div class="product">
+    <article class="product">
 
-      <div class="product-image">
-        🚗
-      </div>
-
-      <div class="product-info">
-
-        <h3>Toyota Premio</h3>
-
-        <div class="price">
-          UGX 28,000,000
-        </div>
-
-        <div class="location">
-          📍 Wakiso
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="product">
-
-      <div class="product-image">
+      <div class="productImage">
         💻
       </div>
 
-      <div class="product-info">
+      <div class="productInfo">
 
-        <h3>HP Laptop</h3>
+        <h3>
+          HP Laptop
+        </h3>
 
-        <div class="price">
-          UGX 1,500,000
-        </div>
+        <strong>
+          UGX 1,200,000
+        </strong>
 
-        <div class="location">
-          📍 Kampala
-        </div>
+        <small>
+          📍 Wakiso
+        </small>
 
       </div>
 
-    </div>
+    </article>
+
+
+    <article class="product">
+
+      <div class="productImage">
+        👟
+      </div>
+
+      <div class="productInfo">
+
+        <h3>
+          Sports Shoes
+        </h3>
+
+        <strong>
+          UGX 85,000
+        </strong>
+
+        <small>
+          📍 Entebbe
+        </small>
+
+      </div>
+
+    </article>
+
+
+    <article class="product">
+
+      <div class="productImage">
+        🛋️
+      </div>
+
+      <div class="productInfo">
+
+        <h3>
+          Modern Sofa
+        </h3>
+
+        <strong>
+          UGX 750,000
+        </strong>
+
+        <small>
+          📍 Kampala
+        </small>
+
+      </div>
+
+    </article>
+
+
+    <article class="product">
+
+      <div class="productImage">
+        🏍️
+      </div>
+
+      <div class="productInfo">
+
+        <h3>
+          Bajaj Motorcycle
+        </h3>
+
+        <strong>
+          UGX 3,800,000
+        </strong>
+
+        <small>
+          📍 Mukono
+        </small>
+
+      </div>
+
+    </article>
 
   </div>
 
@@ -681,648 +1121,684 @@ footer p{
 
 <!-- LIVE -->
 
-<section class="section">
+<section
+class="section"
+id="live">
 
-  <div class="live">
-
-    <div class="live-badge">
-      🔴 LIVE NOW
-    </div>
+  <div class="sectionHead">
 
     <h2>
-      Samsung Phones Clearance
+      🔴 Live Advertising
     </h2>
 
-    <p>
-      Live advertising by Kampala Phone Hub
-    </p>
-
-    <div class="live-number">
-      1,284
-    </div>
-
-    <p>
-      people watching
-    </p>
-
-    <button
-      style="
-      margin-top:18px;
-      padding:13px 20px;
-      border:0;
-      border-radius:10px;
-      font-weight:bold;"
-      onclick="alert('Live page will open here.')">
-
-      ▶ Join Live
-
-    </button>
-
-    <button
-      style="
-      margin-top:18px;
-      padding:13px 20px;
-      border:0;
-      border-radius:10px;
-      font-weight:bold;"
-      onclick="shareLive()">
-
-      🔗 Share Live
-
+    <button>
+      See all →
     </button>
 
   </div>
 
-</section>
+
+  <div class="horizontal">
 
 
-<!-- SELL -->
+    <article class="liveCard">
 
-<section class="section">
+      <span class="liveBadge">
+        🔴 LIVE NOW
+      </span>
 
-  <div class="banner">
-
-    <h2>
-      🏪 Start selling on UgandaMarket
-    </h2>
-
-    <p>
-      Create your store and reach buyers across Uganda.
-    </p>
-
-    <button
-      onclick="alert('Seller registration will open here.')">
-
-      Register as Seller
-
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- OWNER DASHBOARD -->
-
-<div
-  class="modal"
-  id="adminModal">
-
-  <div class="modal-card">
-
-    <button
-      class="close"
-      onclick="closeAdmin()">
-
-      ×
-
-    </button>
-
-
-    <div class="admin-title">
-
-      <h2>
-        👑 Owner Dashboard
-      </h2>
+      <h3>
+        Samsung Phones Clearance
+      </h3>
 
       <p>
-        UgandaMarket platform overview
+        Kampala Phone Hub
       </p>
 
-    </div>
+      <strong>
+        1,284 people watching
+      </strong>
 
+      <div>
 
-    <!-- MENU -->
+        <button
+        onclick="toast('Joining live...')">
+          ▶ Join Live
+        </button>
 
-    <div class="admin-menu">
-
-      <button
-        class="active"
-        onclick="showAdminSection('overview',this)">
-        📊 Overview
-      </button>
-
-      <button
-        onclick="showAdminSection('users',this)">
-        👥 Users
-      </button>
-
-      <button
-        onclick="showAdminSection('sellers',this)">
-        🏪 Sellers
-      </button>
-
-      <button
-        onclick="showAdminSection('payments',this)">
-        💰 Wallet
-      </button>
-
-      <button
-        onclick="showAdminSection('products',this)">
-        📦 Products
-      </button>
-
-      <button
-        onclick="showAdminSection('live',this)">
-        🔴 Live
-      </button>
-
-      <button
-        onclick="showAdminSection('messages',this)">
-        💬 Messages
-      </button>
-
-    </div>
-
-
-    <!-- OVERVIEW -->
-
-    <div id="overview">
-
-      <div class="stats">
-
-        <div class="stat">
-
-          <div class="stat-icon">
-            👥
-          </div>
-
-          <div class="stat-label">
-            Registered users
-          </div>
-
-          <div class="stat-number">
-            12,480
-          </div>
-
-        </div>
-
-
-        <div class="stat">
-
-          <div class="stat-icon">
-            👀
-          </div>
-
-          <div class="stat-label">
-            Visitors
-          </div>
-
-          <div class="stat-number">
-            38,620
-          </div>
-
-        </div>
-
-
-        <div class="stat">
-
-          <div class="stat-icon">
-            🟢
-          </div>
-
-          <div class="stat-label">
-            Online now
-          </div>
-
-          <div class="stat-number">
-            246
-          </div>
-
-        </div>
-
-
-        <div class="stat">
-
-          <div class="stat-icon">
-            💰
-          </div>
-
-          <div class="stat-label">
-            Total revenue
-          </div>
-
-          <div class="stat-number">
-            UGX 8.45M
-          </div>
-
-        </div>
+        <button
+        onclick="shareLive()">
+          🔗 Share
+        </button>
 
       </div>
 
-
-      <div class="dashboard-grid">
-
-        <div class="dashboard-card">
-
-          <h3>
-            📈 Visitor activity
-          </h3>
-
-          <div class="chart">
-
-            <div class="bar" style="height:40%"></div>
-            <div class="bar" style="height:55%"></div>
-            <div class="bar" style="height:48%"></div>
-            <div class="bar" style="height:70%"></div>
-            <div class="bar" style="height:63%"></div>
-            <div class="bar" style="height:85%"></div>
-            <div class="bar" style="height:100%"></div>
-
-          </div>
-
-          <div class="days">
-
-            <div>Mon</div>
-            <div>Tue</div>
-            <div>Wed</div>
-            <div>Thu</div>
-            <div>Fri</div>
-            <div>Sat</div>
-            <div>Sun</div>
-
-          </div>
-
-        </div>
+    </article>
 
 
-        <div class="dashboard-card">
+    <article class="liveCard">
 
-          <h3>
-            🔴 Live now
-          </h3>
+      <span class="liveBadge">
+        🔴 LIVE NOW
+      </span>
 
-          <div class="live">
+      <h3>
+        Fashion Weekend Sale
+      </h3>
 
-            <div class="live-badge">
-              LIVE
-            </div>
+      <p>
+        Kampala Fashion Store
+      </p>
 
-            <h3>
-              Samsung Clearance
-            </h3>
+      <strong>
+        634 people watching
+      </strong>
 
-            <div class="live-number">
-              1,284
-            </div>
+      <div>
 
-            <p>
-              viewers
-            </p>
+        <button
+        onclick="toast('Joining live...')">
+          ▶ Join Live
+        </button>
 
-          </div>
-
-        </div>
+        <button
+        onclick="shareLive()">
+          🔗 Share
+        </button>
 
       </div>
 
-
-      <div
-        class="dashboard-card"
-        style="margin-top:18px">
-
-        <h3>
-          🔥 Most viewed products
-        </h3>
-
-        <div class="list">
-
-          <div class="list-item">
-
-            <div>
-              <b>Samsung Galaxy S24</b>
-              <br>
-              <small>📍 Kampala Phone Hub</small>
-            </div>
-
-            <b>
-              4,820 views
-            </b>
-
-          </div>
+    </article>
 
 
-          <div class="list-item">
+    <article class="liveCard">
 
-            <div>
-              <b>Toyota Premio</b>
-              <br>
-              <small>📍 Kampala Motors</small>
-            </div>
+      <span class="liveBadge">
+        🔴 LIVE NOW
+      </span>
 
-            <b>
-              3,910 views
-            </b>
+      <h3>
+        Cars & Bikes Deals
+      </h3>
 
-          </div>
+      <p>
+        Auto Uganda
+      </p>
 
+      <strong>
+        412 people watching
+      </strong>
 
-          <div class="list-item">
+      <div>
 
-            <div>
-              <b>iPhone 15</b>
-              <br>
-              <small>📍 Entebbe Phones</small>
-            </div>
+        <button
+        onclick="toast('Joining live...')">
+          ▶ Join Live
+        </button>
 
-            <b>
-              3,240 views
-            </b>
-
-          </div>
-
-        </div>
+        <button
+        onclick="shareLive()">
+          🔗 Share
+        </button>
 
       </div>
 
-    </div>
+    </article>
+
+  </div>
+
+</section>
 
 
-    <!-- USERS -->
+<!-- REELS -->
 
-    <div
-      id="users"
-      style="display:none">
+<section
+class="section"
+id="reels">
 
-      <div class="stats">
+  <div class="sectionHead">
 
-        <div class="stat">
-          <div class="stat-icon">👥</div>
-          <div class="stat-label">Total users</div>
-          <div class="stat-number">12,480</div>
-        </div>
+    <h2>
+      🎬 UgandaMarket Reels
+    </h2>
 
-        <div class="stat">
-          <div class="stat-icon">🏪</div>
-          <div class="stat-label">Sellers</div>
-          <div class="stat-number">2,860</div>
-        </div>
+    <button
+    onclick="openModal('reelModal')">
+      Create Reel +
+    </button>
 
-        <div class="stat">
-          <div class="stat-icon">🛒</div>
-          <div class="stat-label">Buyers</div>
-          <div class="stat-number">9,620</div>
-        </div>
+  </div>
 
-        <div class="stat">
-          <div class="stat-icon">🟢</div>
-          <div class="stat-label">Online</div>
-          <div class="stat-number">246</div>
-        </div>
+
+  <div class="horizontal reels">
+
+
+    <article class="reel">
+
+      <div class="play">
+        ▶
+      </div>
+
+      <h3>
+        New Samsung stock 📱
+      </h3>
+
+      <p>
+        Kampala Phone Hub
+      </p>
+
+      <small>
+        👀 12K views
+      </small>
+
+      <div class="reelButtons">
+
+        <button>
+          ❤️ 1.2K
+        </button>
+
+        <button
+        onclick="shareLive()">
+          🔗 Share
+        </button>
 
       </div>
 
+    </article>
 
-      <div
-        class="dashboard-card"
-        style="margin-top:18px">
 
-        <h3>
-          Recent registrations
-        </h3>
+    <article class="reel">
 
-        <div class="table-wrapper">
+      <div class="play">
+        ▶
+      </div>
 
-          <table>
+      <h3>
+        Fresh sneakers 👟
+      </h3>
 
-            <tr>
-              <th>Name</th>
-              <th>Type</th>
-              <th>Status</th>
-              <th>Date</th>
-            </tr>
+      <p>
+        Street Wear UG
+      </p>
 
-            <tr>
-              <td>John's Electronics</td>
-              <td>Seller</td>
-              <td>
-                <span class="status paid">
-                  Verified
-                </span>
-              </td>
-              <td>Today</td>
-            </tr>
+      <small>
+        👀 8.4K views
+      </small>
 
-            <tr>
-              <td>Sarah Fashion</td>
-              <td>Seller</td>
-              <td>
-                <span class="status paid">
-                  Verified
-                </span>
-              </td>
-              <td>Today</td>
-            </tr>
+      <div class="reelButtons">
 
-            <tr>
-              <td>David</td>
-              <td>Buyer</td>
-              <td>
-                <span class="status paid">
-                  Active
-                </span>
-              </td>
-              <td>Today</td>
-            </tr>
+        <button>
+          ❤️ 842
+        </button>
 
-          </table>
-
-        </div>
+        <button
+        onclick="shareLive()">
+          🔗 Share
+        </button>
 
       </div>
+
+    </article>
+
+
+    <article class="reel">
+
+      <div class="play">
+        ▶
+      </div>
+
+      <h3>
+        Kitchen makeover 🏠
+      </h3>
+
+      <p>
+        Home Plus
+      </p>
+
+      <small>
+        👀 6.1K views
+      </small>
+
+      <div class="reelButtons">
+
+        <button>
+          ❤️ 613
+        </button>
+
+        <button
+        onclick="shareLive()">
+          🔗 Share
+        </button>
+
+      </div>
+
+    </article>
+
+
+    <article class="reel">
+
+      <div class="play">
+        ▶
+      </div>
+
+      <h3>
+        Motorbike deal 🏍️
+      </h3>
+
+      <p>
+        Auto Uganda
+      </p>
+
+      <small>
+        👀 4.9K views
+      </small>
+
+      <div class="reelButtons">
+
+        <button>
+          ❤️ 490
+        </button>
+
+        <button
+        onclick="shareLive()">
+          🔗 Share
+        </button>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- SELLERS -->
+
+<section class="section">
+
+  <div class="sectionHead">
+
+    <h2>
+      🏪 Featured Sellers
+    </h2>
+
+    <button>
+      See all →
+    </button>
+
+  </div>
+
+
+  <div class="horizontal">
+
+
+    <div class="seller">
+
+      <div class="sellerIcon">
+        📱
+      </div>
+
+      <h3>
+        Kampala Phone Hub
+      </h3>
+
+      <small>
+        ⭐ 4.8 · Kampala
+      </small>
+
+      <button
+      onclick="openModal('messagesModal')">
+        Message Seller
+      </button>
 
     </div>
 
 
-    <!-- SELLERS -->
+    <div class="seller">
 
-    <div
-      id="sellers"
-      style="display:none">
-
-      <div class="stats">
-
-        <div class="stat">
-          <div class="stat-icon">🏪</div>
-          <div class="stat-label">Total sellers</div>
-          <div class="stat-number">2,860</div>
-        </div>
-
-        <div class="stat">
-          <div class="stat-icon">✅</div>
-          <div class="stat-label">Verified</div>
-          <div class="stat-number">2,410</div>
-        </div>
-
-        <div class="stat">
-          <div class="stat-icon">⏳</div>
-          <div class="stat-label">Pending</div>
-          <div class="stat-number">450</div>
-        </div>
-
-        <div class="stat">
-          <div class="stat-icon">📦</div>
-          <div class="stat-label">Products</div>
-          <div class="stat-number">6,820</div>
-        </div>
-
+      <div class="sellerIcon">
+        👗
       </div>
 
+      <h3>
+        Fashion House UG
+      </h3>
 
-      <div
-        class="dashboard-card"
-        style="margin-top:18px">
+      <small>
+        ⭐ 4.7 · Ntinda
+      </small>
 
-        <h3>
-          Recent sellers
-        </h3>
-
-        <div class="list">
-
-          <div class="list-item">
-            <div>
-              <b>Kampala Phone Hub</b>
-              <br>
-              <small>Phones • Kampala</small>
-            </div>
-
-            <span class="status paid">
-              Verified
-            </span>
-          </div>
-
-
-          <div class="list-item">
-            <div>
-              <b>Wakiso Motors</b>
-              <br>
-              <small>Cars • Wakiso</small>
-            </div>
-
-            <span class="status pending">
-              Pending
-            </span>
-          </div>
-
-
-          <div class="list-item">
-            <div>
-              <b>Sarah Fashion</b>
-              <br>
-              <small>Fashion • Entebbe</small>
-            </div>
-
-            <span class="status paid">
-              Verified
-            </span>
-          </div>
-
-        </div>
-
-      </div>
+      <button
+      onclick="openModal('messagesModal')">
+        Message Seller
+      </button>
 
     </div>
 
 
-    <!-- PAYMENTS / WALLET -->
+    <div class="seller">
 
-    <div
-      id="payments"
-      style="display:none">
-
-      <div class="stats">
-
-        <div class="stat">
-          <div class="stat-icon">💰</div>
-          <div class="stat-label">Total revenue</div>
-          <div class="stat-number">
-            UGX 8.45M
-          </div>
-        </div>
-
-        <div class="stat">
-          <div class="stat-icon">📅</div>
-          <div class="stat-label">Today</div>
-          <div class="stat-number">
-            UGX 420K
-          </div>
-        </div>
-
-        <div class="stat">
-          <div class="stat-icon">⏳</div>
-          <div class="stat-label">Pending</div>
-          <div class="stat-number">
-            UGX 85K
-          </div>
-        </div>
-
-        <div class="stat">
-          <div class="stat-icon">↩️</div>
-          <div class="stat-label">Refunded</div>
-          <div class="stat-number">
-            UGX 30K
-          </div>
-        </div>
-
+      <div class="sellerIcon">
+        🚗
       </div>
 
+      <h3>
+        Auto Uganda
+      </h3>
 
-      <div
-        class="dashboard-card"
-        style="margin-top:18px">
+      <small>
+        ⭐ 4.9 · Kampala
+      </small>
 
-        <h3>
-          💰 Seller payments
-        </h3>
+      <button
+      onclick="openModal('messagesModal')">
+        Message Seller
+      </button>
 
-        <div class="table-wrapper">
+    </div>
 
-          <table>
+  </div>
 
-            <tr>
-
-              <th>Seller</th>
-              <th>Payment</th>
-              <th>Method</th>
-              <th>Amount</th>
-              <th>Status</th>
-
-            </tr>
+</section>
 
 
-            <tr>
+<!-- SELLER BANNER -->
 
-              <td>
-                Kampala Phone Hub
-              </td>
+<section class="sellBanner">
 
-              <td>
-                Ad promotion
-              </td>
+  <h2>
+    🏪 Start selling on UgandaMarket
+  </h2>
 
-              <td>
-                MTN
-              </td>
+  <p>
+    Create your store, upload products and
+    reach buyers across Uganda.
+  </p>
 
-              <td>
-                UGX 10,000
-              </td>
+  <button
+  onclick="openModal('sellerModal')">
+    + Register as Seller
+  </button>
 
-              <td>
-                <span class="status paid">
-                  Paid
-                </span>
-              </td>
+</section>
 
-            </tr>
+</div>
+
+</main>
 
 
-            <tr>
+<!-- BOTTOM NAV -->
 
-              <td>
-                Sarah Fashion
-              </td>
+<footer class="bottomNav">
 
-              <td>
-                Featured listing
-    
+  <button onclick="go('home',this)">
+    <b>⌂</b>
+    Home
+  </button>
+
+  <button onclick="go('categories',this)">
+    <b>▦</b>
+    Categories
+  </button>
+
+  <button onclick="go('reels',this)">
+    <b>▶</b>
+    Reels
+  </button>
+
+  <button
+  onclick="openModal('messagesModal')">
+    <b>♡</b>
+    Messages
+  </button>
+
+  <button
+  onclick="openModal('profileModal')">
+    <b>●</b>
+    Profile
+  </button>
+
+</footer>
+
+<script>
+/* UgandaMarket - Code 3 */
+
+const $ = id => document.getElementById(id);
+
+function showMessage(text) {
+  alert("UgandaMarket\n\n" + text);
+}
+
+/* Search */
+function searchMarket() {
+  const input = $("searchInput");
+  if (!input) return;
+
+  const query = input.value.trim();
+
+  if (!query) {
+    showMessage("Type what you are looking for.");
+    return;
+  }
+
+  showMessage("Searching UgandaMarket for: " + query);
+}
+
+/* Seller registration */
+function sellerRegistration() {
+  const name = prompt("Enter your full name:");
+  if (!name) return;
+
+  const phone = prompt("Enter your MTN or Airtel number:");
+  if (!phone) return;
+
+  const business = prompt("Enter your business/store name:");
+  if (!business) return;
+
+  localStorage.setItem("sellerName", name);
+  localStorage.setItem("sellerPhone", phone);
+  localStorage.setItem("sellerBusiness", business);
+
+  showMessage(
+    "Seller registration saved!\n\n" +
+    "Name: " + name +
+    "\nBusiness: " + business
+  );
+}
+
+/* Owner profile */
+function ownerProfile() {
+  const name = localStorage.getItem("sellerName");
+
+  if (name) {
+    showMessage("Welcome back, " + name + "!");
+  } else {
+    showMessage("Owner profile and seller information will appear here.");
+  }
+}
+
+/* Share live advertising */
+function shareLive(title = "UgandaMarket Live") {
+  const shareText =
+    title + "\n\nWatch this live advertisement on UgandaMarket 🇺🇬";
+
+  if (navigator.share) {
+    navigator.share({
+      title: title,
+      text: shareText,
+      url: window.location.href
+    }).catch(() => {});
+  } else {
+    navigator.clipboard.writeText(
+      shareText + "\n" + window.location.href
+    );
+
+    showMessage("Live invitation copied. You can now share it.");
+  }
+}
+
+/* Join live */
+function joinLive(title = "UgandaMarket Live") {
+  showMessage(
+    "Joining " + title + "...\n\n" +
+    "Live video will open here when the seller starts broadcasting."
+  );
+}
+
+/* Reels */
+function openReel(title = "UgandaMarket Reel") {
+  showMessage(
+    "Opening " + title +
+    "\n\nReels will play vertically like a modern social-media feed."
+  );
+}
+
+/* Categories - horizontal scrolling */
+document.querySelectorAll(".category-card").forEach(card => {
+  card.addEventListener("click", () => {
+    const category =
+      card.dataset.category ||
+      card.textContent.trim();
+
+    showMessage("Showing " + category + " products.");
+  });
+});
+
+/* First visit preferences */
+function firstVisitSetup() {
+  if (localStorage.getItem("ugandaMarketVisited")) return;
+
+  setTimeout(() => {
+    const favorites = prompt(
+      "Welcome to UgandaMarket 🇺🇬\n\n" +
+      "What are your favourite categories?\n" +
+      "Example: Phones, Cars, Clothes, Food"
+    );
+
+    if (favorites) {
+      localStorage.setItem("favorites", favorites);
+    }
+
+    localStorage.setItem("ugandaMarketVisited", "yes");
+  }, 1000);
+}
+
+/* Feedback after visiting */
+function giveFeedback() {
+  const rating = prompt(
+    "How would you rate UgandaMarket?\n\n" +
+    "1 = Very bad\n" +
+    "2 = Bad\n" +
+    "3 = Good\n" +
+    "4 = Very good\n" +
+    "5 = Excellent"
+  );
+
+  if (!rating) return;
+
+  localStorage.setItem("siteRating", rating);
+
+  const recommend = confirm(
+    "Would you recommend UgandaMarket to someone else?"
+  );
+
+  localStorage.setItem(
+    "recommendSite",
+    recommend ? "Yes" : "No"
+  );
+
+  showMessage("Thank you for your feedback! 🇺🇬");
+}
+
+/* Wallet */
+function openWallet() {
+  showMessage(
+    "Owner Wallet\n\n" +
+    "Seller payments and advertising payments will appear here.\n\n" +
+    "MTN Mobile Money\n" +
+    "Airtel Money"
+  );
+}
+
+/* Seller messages */
+function openMessages() {
+  showMessage(
+    "Messages\n\n" +
+    "Seller-to-seller and owner communication will appear here."
+  );
+}
+
+/* Mobile money payment */
+function makePayment(network) {
+  const phone = prompt(
+    "Enter the " + network + " Mobile Money number:"
+  );
+
+  if (!phone) return;
+
+  const amount = prompt("Enter payment amount in UGX:");
+
+  if (!amount) return;
+
+  showMessage(
+    "Payment request created.\n\n" +
+    network + ": " + phone +
+    "\nAmount: UGX " + amount
+  );
+}
+
+/* Currency */
+function changeCurrency() {
+  const currency = prompt(
+    "Choose currency:\n\n" +
+    "UGX - Uganda Shillings\n" +
+    "USD - US Dollar\n" +
+    "KES - Kenya Shilling\n" +
+    "TZS - Tanzania Shilling"
+  );
+
+  if (!currency) return;
+
+  localStorage.setItem("currency", currency.toUpperCase());
+
+  showMessage(
+    "Currency changed to " +
+    currency.toUpperCase()
+  );
+}
+
+/* Save favorites */
+function saveFavorite(item) {
+  let favorites =
+    JSON.parse(localStorage.getItem("savedFavorites") || "[]");
+
+  if (!favorites.includes(item)) {
+    favorites.push(item);
+    localStorage.setItem(
+      "savedFavorites",
+      JSON.stringify(favorites)
+    );
+
+    showMessage(item + " added to your favourites ❤️");
+  } else {
+    showMessage(item + " is already in your favourites.");
+  }
+}
+
+/* Run first visit */
+firstVisitSetup();
+
+/* Feedback button after some time */
+setTimeout(() => {
+  if (localStorage.getItem("ugandaMarketVisited")) {
+    // Feedback can be opened from the menu.
+    console.log("UgandaMarket ready.");
+  }
+}, 2000);
+
+console.log("UgandaMarket Code 3 loaded successfully 🇺🇬");
+</script>
+
+</body>
+</html>
