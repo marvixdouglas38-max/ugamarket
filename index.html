@@ -6,8 +6,101 @@
 content="width=device-width, initial-scale=1.0">
 
 <title>UgandaMarket</title>
+<meta name="description" content="UgandaMarket - Buy and sell products, services and great deals across Uganda.">
+<meta name="keywords" content="UgandaMarket, Uganda marketplace, buy and sell Uganda, Kampala marketplace, Ugandan sellers">
+<meta name="author" content="UgandaMarket">
+<meta name="robots" content="index, follow">
 
-<style>
+<style>#aiButton {
+  position: fixed;
+  right: 18px;
+  bottom: 80px;
+  z-index: 9999;
+  border: 0;
+  border-radius: 30px;
+  padding: 14px 18px;
+  background: #087f3f;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 5px 20px #0004;
+}
+
+#aiBox {
+  display: none;
+  position: fixed;
+  right: 15px;
+  bottom: 75px;
+  width: min(360px, 90vw);
+  height: 500px;
+  z-index: 10000;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px #0005;
+  flex-direction: column;
+}
+
+.aiHeader {
+  background: #087f3f;
+  color: white;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.aiHeader button {
+  background: none;
+  border: 0;
+  color: white;
+  font-size: 24px;
+}
+
+#aiMessages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+}
+
+.aiWelcome,
+.aiMessage,
+.userMessage {
+  padding: 11px;
+  margin-bottom: 10px;
+  border-radius: 14px;
+}
+
+.aiWelcome,
+.aiMessage {
+  background: #f0f2f0;
+}
+
+.userMessage {
+  background: #087f3f;
+  color: white;
+  margin-left: 35px;
+}
+
+.aiInput {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.aiInput input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+}
+
+.aiInput button {
+  margin-left: 6px;
+  border: 0;
+  border-radius: 20px;
+  padding: 0 15px;
+  background: #f5b900;
+  font-weight: bold;
+}<style>
 
 *{
   box-sizing:border-box;
@@ -1798,6 +1891,97 @@ setTimeout(() => {
 }, 2000);
 
 console.log("UgandaMarket Code 3 loaded successfully 🇺🇬");
+</script>
+<!-- UgandaMarket AI -->
+<button id="aiButton" onclick="openAI()">
+  🤖 Ask UgandaMarket AI
+</button>
+
+<div id="aiBox">
+  <div class="aiHeader">
+    <b>🤖 UgandaMarket AI</b>
+    <button onclick="closeAI()">×</button>
+  </div>
+
+  <div id="aiMessages">
+    <div class="aiWelcome">
+      Hello! 👋 I'm UgandaMarket AI.<br><br>
+      I can help you find products, understand adverts,
+      compare choices and help sellers create better listings.
+    </div>
+  </div>
+
+  <div class="aiInput">
+    <input id="aiInput"
+      placeholder="Ask UgandaMarket AI..."
+      onkeydown="if(event.key==='Enter') askAI()">
+
+    <button onclick="askAI()">Send</button>
+  </div>
+</div>
+
+<script>
+function openAI() {
+  document.getElementById("aiBox").style.display = "flex";
+}
+
+function closeAI() {
+  document.getElementById("aiBox").style.display = "none";
+}
+
+function askAI() {
+  const input = document.getElementById("aiInput");
+  const messages = document.getElementById("aiMessages");
+  const question = input.value.trim();
+
+  if (!question) return;
+
+  messages.innerHTML +=
+    '<div class="userMessage">' +
+    question +
+    '</div>';
+
+  input.value = "";
+
+  let answer =
+    "I'm UgandaMarket AI 🤖. I can help you find products, " +
+    "compare choices, understand adverts and help sellers.";
+
+  const q = question.toLowerCase();
+
+  if (q.includes("phone")) {
+    answer =
+      "📱 Looking for a phone? Tell me your budget and " +
+      "I'll help you choose what to look for.";
+  }
+
+  if (q.includes("car")) {
+    answer =
+      "🚗 I can help you search for cars. Tell me your " +
+      "budget, preferred location and car type.";
+  }
+
+  if (q.includes("sell")) {
+    answer =
+      "🛍️ To sell on UgandaMarket, use the Sell button " +
+      "and complete your seller registration.";
+  }
+
+  if (q.includes("price")) {
+    answer =
+      "💰 Tell me the product you're interested in and " +
+      "your budget so I can help you compare options.";
+  }
+
+  setTimeout(function() {
+    messages.innerHTML +=
+      '<div class="aiMessage">' +
+      answer +
+      '</div>';
+
+    messages.scrollTop = messages.scrollHeight;
+  }, 400);
+}
 </script>
 
 </body>
